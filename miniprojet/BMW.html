@@ -33,7 +33,7 @@
       display: inline-block;
       animation: tomber 0.4s ease forwards;
     }
-    /* délai par lettre */
+    
     .lettre:nth-child(1)  { animation-delay: 0.05s; }
     .lettre:nth-child(2)  { animation-delay: 0.10s; }
     .lettre:nth-child(3)  { animation-delay: 0.15s; }
@@ -76,7 +76,7 @@
     .page { opacity: 0; animation: apparaitre 0.8s ease forwards 1.3s; }
     @keyframes apparaitre { to { opacity: 1; } }
  
-    /* ══ NAV ══ */
+   
     nav {
       background:rgb(98, 98, 97);
       display: flex;
@@ -103,7 +103,7 @@
     }
     .nav-back:hover { color: grey; }
  
-    /* ══ HERO GRANDE IMAGE ══ */
+    
     .hero {
       position: relative;
       height: 92vh;
@@ -130,7 +130,7 @@
       pointer-events: none;
     }
  
-    /* cadre Art Déco : 4 coins */
+   
     .hero-frame {
       position: absolute;
       top: 30px; left: 40px; right: 40px; bottom: 80px;
@@ -143,7 +143,7 @@
     .hf-bl { bottom: 0; left: 0;  border-bottom: 2px solid rgba(201,168,76,0.5); border-left: 2px solid rgba(201,168,76,0.5); }
     .hf-br { bottom: 0; right: 0; border-bottom: 2px solid rgba(201,168,76,0.5); border-right: 2px solid rgba(201,168,76,0.5); }
  
-    /* texte centré sur le hero */
+   
     .hero-content {
       position: absolute;
       bottom: 70px; left: 0; right: 0;
@@ -197,7 +197,7 @@
       font-style: italic;
     }
  
-    /* ══ SPECS CIRCULAIRES ══ */
+   
     .specs-circles {
       background: rgb(111, 111, 106);
       padding: 60px;
@@ -237,7 +237,7 @@
     .cs-unit { font-size: 10px; color: beige; margin-top: 2px; }
     .cs-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; color: beige; text-transform: uppercase; }
  
-    /* ══ HISTOIRE ══ */
+   
     .histoire {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -255,7 +255,7 @@
       filter: sepia(15%) saturate(0.85);
       display: block;
     }
-    /* cadre décoratif autour de l'image */
+    
     .hist-img::before {
       content: '';
       position: absolute;
@@ -265,7 +265,7 @@
       pointer-events: none;
       z-index: 1;
     }
-    /* année en ombre derrière l'image */
+    
     .hist-img::after {
       content: '1956';
       position: absolute;
@@ -299,7 +299,7 @@
     }
     .hist-ligne { width: 40px; height: 1px; background: rgb(0, 0, 24); margin: 20px 0; }
  
-    /* ══ FICHE TECHNIQUE (fond sombre) ══ */
+   
     .fiche {
       background:rgb(111, 111, 106);
       padding: 70px 60px;
@@ -350,7 +350,7 @@
       color: #f2e7dd;
     }
  
-    /* ══ BOUTON RÉSERVER ══ */
+    
     .btn-wrap {
       text-align: center;
       padding: 60px 20px;
@@ -386,7 +386,7 @@
       text-transform: uppercase;
     }
  
-    /* ══ RESPONSIVE ══ */
+    
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .hero-frame { display: none; }
@@ -418,7 +418,7 @@
       <a href="ourcars.html" class="nav-back">← Nos Voitures</a>
     </nav>
  
-    <!-- HERO -->
+   
     <div class="hero">
       <div class="hero-bg"></div>
       <div class="hero-frame">
@@ -436,7 +436,7 @@
       </div>
     </div>
  
-    <!-- SPECS CIRCULAIRES -->
+   
     <div class="specs-circles">
       <div class="circle-spec">
         <div class="cs-ring">
@@ -475,7 +475,7 @@
       </div>
     </div>
  
-    <!-- HISTOIRE -->
+   
     <div class="histoire">
       <div class="hist-img">
         <img src="bmw1.jpeg" alt="BMW 507"/>
@@ -489,7 +489,7 @@
       </div>
     </div>
  
-    <!-- FICHE TECHNIQUE -->
+   
     <div class="fiche">
       <div class="fiche-titre">FICHE TECHNIQUE</div>
       <div class="fiche-sous">Spécifications complètes</div>
@@ -512,7 +512,7 @@
       </div>
     </div>
  
-    <!-- BOUTON -->
+    
     <div class="btn-wrap">
       <a href="contact.html" class="btn-reserver">Réserver cette voiture</a>
     </div>
