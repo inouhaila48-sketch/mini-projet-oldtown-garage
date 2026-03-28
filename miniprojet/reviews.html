@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Old Town Garage - Reviews</title>
+
+<link rel="stylesheet" href="reviews.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="page-content"></div>
+ <header class="header">
+        <a href="#" class="logo">Oldtown</a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="home2.html">Home</a></li>
+                <li><a href="ourcars.html">Our Cars</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contactus.html" id="contactBtn">Contact Us</a>
+                 <li><a href="reviews.html">Reviews</a></li>
+                
+            </ul>
+        </nav>
+       
+    </header>
+
+<div class="header1">
+    <div class="overlay">
+        <h1>Customer Reviews</h1>
+        <p>Experience the elegance of classic driving</p>
+    </div>
+</div>
+
+
+<section class="reviews-section">
+
+    <div class="reviews-container">
+
+        
+        <div class="review-card">
+            <div class="profile">
+                <img src="rajl1.jpeg" alt="client">
+            </div>
+            <div class="line">
+                <div class="stars">★★★★★</div>
+                <h2>Incredible Experience</h2>
+                <p class="name">— John M.</p>
+                <p class="text">
+                    Driving a classic Mustang was unforgettable. The service was premium and smooth.
+                </p>
+            </div>
+        </div>
+
+        
+        <div class="review-card">
+            <div class="profile">
+                <img src="mra1.jpeg" alt="client">
+            </div>
+            <div class="line">
+                <div class="stars">★★★★★</div>
+                <h2>Perfect Service</h2>
+                <p class="name">— Sarah L.</p>
+                <p class="text">
+                    Everything was elegant and well organized. The car felt like a piece of history.
+                </p>
+            </div>
+        </div>
+
+      
+        <div class="review-card">
+            <div class="profile">
+                <img src="rajl2.jpeg" alt="client">
+            </div>
+            <div class="line">
+                <div class="stars">★★★★★</div>
+                <h2>Luxury Feeling</h2>
+                <p class="name">— David R.</p>
+                <p class="text">
+                    Amazing experience. The atmosphere and the cars are just next level.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <h2 id="leaverv">Leave Your Review</h2>
+    <div class="review-card leave-review">
+    <div class="profile">
+        <img src="insan.jpeg" alt="client">
+    </div>
+
+    <div class="line">
+
+        <form class="review-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <textarea name="message" placeholder="Write your comment..." rows="4" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="submission-message" style="display:none; text-align:center;">
+            <p>Message submitted ✅</p>
+            <button class="back-home">Retour à la page principale</button>
+        </div>
+        <div class="stars1">
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i><br>
+    
+  </div>
+    </div>
+</div>
+
+</section>
+
+
+<script>
+const reviewForm = document.querySelector('.leave-review .review-form');
+const submissionMessage = document.querySelector('.leave-review .submission-message');
+const backButton = document.querySelector('.leave-review .back-home');
+
+reviewForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    reviewForm.style.display = 'none';
+    submissionMessage.style.display = 'block';
+});
+
+backButton.addEventListener('click', function() {
+    window.location.href = 'home2.html';
+});
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

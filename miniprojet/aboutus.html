@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us </title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="aboutus.css"/>
+</head>
+<body>
+
+  
+  
+
+  <div class="page-content">
+
+    <nav>
+      <div class="logo">OldTown</div>
+      <div class="nav-links">
+        <a href="home2.html">Home</a>
+        <a href="ourcars.html">Our Cars</a>
+        <a href="aboutus.html" class="active">About Us</a>
+        <a href="contactus.html">Contact</a>
+        <a href="reviews.html">Reviews</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="tag">Notre Histoire</div>
+      <h1>About <em>Us</em></h1>
+      <div class="hero-ligne"></div>
+    </div>
+
+    <div class="intro-bloc">
+      <p>Notre garage est né d'une passion pour les voitures classiques.
+        Nous sélectionnons des modèles rares et emblématiques afin d'offrir
+        une expérience unique aux amateurs d'automobiles vintage.</p>
+    </div>
+
+    
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>Notre Mission</h3>
+        <ul>
+          <li>Préserver les voitures classiques</li>
+          <li>Permettre aux passionnés de les découvrir</li>
+          <li>Proposer une expérience unique</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⭐</div>
+        <h3>Nos Valeurs</h3>
+        <p>🚗 <strong>Passion</strong> — Nous aimons les voitures classiques.<br/>
+           🛠 <strong>Qualité</strong> — Entretenus avec soin.<br/>
+           🎩 <strong>Élégance</strong> — Chaque voiture représente une époque.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🚘</div>
+        <h3>Notre Collection</h3>
+        <ul>
+          <li>Voitures européennes classiques</li>
+          <li>Voitures américaines vintage</li>
+          <li>Modèles rares de collection</li>
+        </ul>
+      </div>
+
+      
+      <div class="extra-cards" id="extraCards">
+
+        <div class="card">
+          <div class="card-icon">👥</div>
+          <h3>Notre Équipe</h3>
+          <ul>
+            <li>Fondateur du garage</li>
+            <li>Expert automobile</li>
+            <li>Service client dédié</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📍</div>
+          <h3>Contact</h3>
+          <p>📧 oldtown-garage@gmail.com<br/>
+             📞 01 23 45 67 89<br/>
+             📍 123 Rue de l'ancienne ville, 75000 Paris</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="learn-wrap">
+      <button class="btn-learn" id="btn" onclick="toggleText()">Learn More</button>
+    </div>
+
+    
+    <div class="faq-section">
+      <div class="faq-titre">Questions fréquentes</div>
+      <div class="faq-item">
+        <button class="faq-question"><span>L’assurance est-elle incluse ?</span><span class="icon">+</span></button>
+        <div class="faq-answer">Oui, toutes nos locations incluent une assurance de base (responsabilité civile + dommages).
+            Vous pouvez aussi choisir une assurance premium pour plus de protection.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><span>Comment réserver une voiture ?</span><span class="icon">+</span></button>
+        <div class="faq-answer">Choisissez votre voiture dans "Our Cars", cliquez sur "Réserver" et suivez les étapes.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><span>Quels documents sont nécessaires ?</span><span class="icon">+</span></button>
+        <div class="faq-answer">Un permis de conduire valide et une pièce d'identité sont requis.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><span>Qu’est-ce que la franchise ?</span><span class="icon">+</span></button>
+        <div class="faq-answer">La franchise est le montant maximum que vous devez payer en cas d’accident ou de dommages.
+            Elle varie entre 3000 MAD et 12000 MAD</div>
+      </div>
+       <div class="faq-item">
+        <button class="faq-question"><span>Est-ce que la voiture peut être livrée ?</span><span class="icon">+</span></button>
+        <div class="faq-answer">Oui, nous proposons la livraison à domicile ou à l’hôtel dans plusieurs villes.</div>
+      </div>
+      
+      
+    </div>
+
+    <footer>© 2026 OldTown Garage — Location de voitures de collection — Tous droits réservés.</footer>
+
+  </div>
+
+  <script>
+    function toggleText() {
+      var extra = document.getElementById('extraCards');
+      var btn   = document.getElementById('btn');
+      if (extra.classList.contains('visible')) {
+        extra.classList.remove('visible');
+        btn.textContent = 'Learn More';
+      } else {
+        extra.classList.add('visible');
+        btn.textContent = 'Learn less';
+      }
+    }
+
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item   = btn.parentElement;
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

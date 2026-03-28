@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .intro {
+      position: fixed;
+      inset: 0;
+      background:rgb(3, 61, 55);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      animation: disparaitre 0.6s ease forwards 2.4s;
+    }
+    @keyframes disparaitre { to { opacity: 0; pointer-events: none; } }
+ 
+    .lettres {
+      display: flex;
+      gap: 2px;
+    }
+    .lettre {
+      font-family: 'Playfair Display', serif;
+      font-size: 58px;
+      color: beige;
+      letter-spacing: 2px;
+      opacity: 0;
+      transform: translateY(-50px);
+      display: inline-block;
+      animation: tomber 0.4s ease forwards;
+    }
+    /* délai par lettre */
+    .lettre:nth-child(1)  { animation-delay: 0.05s; }
+    .lettre:nth-child(2)  { animation-delay: 0.10s; }
+    .lettre:nth-child(3)  { animation-delay: 0.15s; }
+    .lettre:nth-child(4)  { animation-delay: 0.20s; }
+    .lettre:nth-child(5)  { animation-delay: 0.25s; }
+    .lettre:nth-child(6)  { animation-delay: 0.30s; }
+    .lettre:nth-child(7)  { animation-delay: 0.35s; }
+    .lettre:nth-child(8)  { animation-delay: 0.40s; }
+    .lettre:nth-child(9)  { animation-delay: 0.45s; }
+    .lettre:nth-child(10) { animation-delay: 0.50s; }
+    .lettre:nth-child(11) { animation-delay: 0.55s; }
+    .lettre:nth-child(12) { animation-delay: 0.60s; }
+    @keyframes tomber { to { opacity: 1; transform: translateY(0); } }
+ 
+    .intro-ligne {
+      width: 0; height: 1px;
+      background: beige;
+      animation: elargir 0.7s ease forwards 0.9s;
+    }
+    @keyframes elargir { to { width: 120px; } }
+ 
+    .intro-sous {
+      font-size: 10px;
+      letter-spacing: 6px;
+      color: beige;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: montrer 0.5s ease forwards 1.3s;
+    }
+    @keyframes montrer { to { opacity: 1; } }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    body {
+      background: #f0e8d0;
+      font-family: 'Crimson Text', serif;
+      color:rgb(2, 45, 41);
+    }
+
+
+
+    .page { opacity: 0; animation: apparaitre 0.8s ease forwards 1.3s; }
+    @keyframes apparaitre { to { opacity: 1; } }
+ 
+    /* ══ NAV ══ */
+    nav {
+      background:rgb(3, 61, 55);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 50px;
+      height: 62px;
+      border-bottom: 2px solid beige;
+    }
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 17px;
+      color: beige;
+      letter-spacing: 6px;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-family: 'Crimson Text', serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: beige;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: grey; }
+ 
+    /* ══ BANDE ORNEMENTALE ══ */
+    
+ 
+    /* ══ HERO GRANDE IMAGE ══ */
+    .hero {
+      position: relative;
+      height: 92vh;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('ferrari308.jpeg') center/cover;
+      filter: brightness(0.45) sepia(20%) saturate(0.8);
+      animation: lentZoom 10s ease forwards;
+    }
+    @keyframes lentZoom {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1); }
+    }
+ 
+    /* dégradé bas vers la couleur de fond */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 55%;
+      background: linear-gradient(transparent, #f0e8d0);
+      pointer-events: none;
+    }
+ 
+    /* cadre Art Déco : 4 coins */
+    .hero-frame {
+      position: absolute;
+      top: 30px; left: 40px; right: 40px; bottom: 80px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hf-tl, .hf-tr, .hf-bl, .hf-br { position: absolute; width: 36px; height: 36px; }
+    .hf-tl { top: 0; left: 0;    border-top: 2px solid rgba(201,168,76,0.5); border-left: 2px solid rgba(201,168,76,0.5); }
+    .hf-tr { top: 0; right: 0;   border-top: 2px solid rgba(201,168,76,0.5); border-right: 2px solid rgba(201,168,76,0.5); }
+    .hf-bl { bottom: 0; left: 0;  border-bottom: 2px solid rgba(201,168,76,0.5); border-left: 2px solid rgba(201,168,76,0.5); }
+    .hf-br { bottom: 0; right: 0; border-bottom: 2px solid rgba(201,168,76,0.5); border-right: 2px solid rgba(201,168,76,0.5); }
+ 
+    /* texte centré sur le hero */
+    .hero-content {
+      position: absolute;
+      bottom: 70px; left: 0; right: 0;
+      text-align: center;
+      z-index: 3;
+      opacity: 0;
+      animation: monterTexte 0.9s ease forwards 1.5s;
+    }
+    @keyframes monterTexte {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: none; }
+    }
+ 
+    .hc-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 7px;
+      color: rgb(1, 31, 28);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .hero-content h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(38px, 5vw, 72px);
+      color: rgb(0, 48, 43);
+      letter-spacing: 4px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .hc-model {
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+      font-size: 18px;
+      color:rgb(0, 56, 51);
+      letter-spacing: 2px;
+    }
+    .hc-ligne {
+      width: 80px; height: 1px;
+      background: linear-gradient(to right, transparent, rgb(0, 0, 24), transparent);
+      margin: 16px auto;
+    }
+    .hc-prix {
+      font-family: 'Cinzel', serif;
+      font-size: 34px;
+      color: rgb(3, 61, 55);
+    }
+    .hc-prix span {
+      font-family: 'Crimson Text', serif;
+      font-size: 16px;
+      color: #8a7050;
+      font-style: italic;
+    }
+ 
+    /* ══ SPECS CIRCULAIRES ══ */
+    .specs-circles {
+      background: rgb(3, 61, 55);
+      padding: 60px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      border-top: 2px solid rgb(0, 0, 24);
+    }
+    .circle-spec {
+      text-align: center;
+      opacity: 0;
+      animation: apparaitre 0.6s ease forwards;
+    }
+    .circle-spec:nth-child(1) { animation-delay: 1.6s; }
+    .circle-spec:nth-child(2) { animation-delay: 1.7s; }
+    .circle-spec:nth-child(3) { animation-delay: 1.8s; }
+    .circle-spec:nth-child(4) { animation-delay: 1.9s; }
+    .circle-spec:nth-child(5) { animation-delay: 2.0s; }
+ 
+    .cs-ring {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      border: 1px solid beige;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .circle-spec:hover .cs-ring {
+      border-color: beige;
+      background:  rgb(25, 109, 104);
+    }
+    .cs-val { font-family: 'Cinzel', serif; font-size: 20px; color: beige; line-height: 1; }
+    .cs-unit { font-size: 10px; color: beige; margin-top: 2px; }
+    .cs-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; color: beige; text-transform: uppercase; }
+ 
+    /* ══ HISTOIRE ══ */
+    .histoire {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 60px;
+      align-items: center;
+      gap: 70px;
+    }
+ 
+    .hist-img { position: relative; }
+    .hist-img img {
+      width: 100%; height: 360px;
+      object-fit: cover;
+      filter: sepia(15%) saturate(0.85);
+      display: block;
+    }
+    /* cadre décoratif autour de l'image */
+    .hist-img::before {
+      content: '';
+      position: absolute;
+      top: -14px; left: -14px;
+      right: 14px; bottom: 14px;
+      border: 1px solid rgba(201,168,76,0.4);
+      pointer-events: none;
+      z-index: 1;
+    }
+    /* année en ombre derrière l'image */
+    .hist-img::after {
+      content: '1967';
+      position: absolute;
+      bottom: -20px; right: -20px;
+      font-family: 'Cinzel', serif;
+      font-size: 64px;
+      color:rgb(3, 61, 55);
+      line-height: 1;
+    }
+ 
+    .hist-text .ht-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 5px;
+      color: rgb(0, 0, 24);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .hist-text h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 30px;
+      color: rgb(3, 61, 55);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+    .hist-text p {
+      font-size: 16px;
+      color: rgb(3, 61, 55);
+      line-height: 1.9;
+      margin-bottom: 14px;
+    }
+    .hist-ligne { width: 40px; height: 1px; background: rgb(0, 0, 24); margin: 20px 0; }
+ 
+    /* ══ FICHE TECHNIQUE (fond sombre) ══ */
+    .fiche {
+      background:rgb(3, 61, 55);
+      padding: 70px 60px;
+    }
+    .fiche-titre {
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      color: beige;
+      text-align: center;
+      letter-spacing: 3px;
+      margin-bottom: 6px;
+    }
+    .fiche-sous {
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: #f0e8d0;
+      text-align: center;
+      letter-spacing: 2px;
+      margin-bottom: 50px;
+    }
+ 
+    .fiche-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 60px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .fiche-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid #f0e8d0;
+      transition: padding 0.2s, background 0.2s;
+    }
+    .fiche-row:hover { padding: 14px 10px; background: rgba(201,168,76,0.03); }
+    .fiche-row .fr-l {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: beige;
+      text-transform: uppercase;
+    }
+    .fiche-row .fr-v {
+      font-family: 'Crimson Text', serif;
+      font-size: 16px;
+      color: #f2e7dd;
+    }
+ 
+    /* ══ BOUTON RÉSERVER ══ */
+    .btn-wrap {
+      text-align: center;
+      padding: 60px 20px;
+      background:rgb(3, 61, 55);
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+    .btn-reserver {
+      display: inline-block;
+      padding: 14px 50px;
+      border: 1px solid beige;
+      color: beige;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-reserver:hover {
+      background: beige;
+      color: rgb(3, 61, 55);
+      transform: translateY(-3px);
+    }
+ 
+    footer {
+      background:rgb(3, 61, 55);
+      border-top: 2px solid beige;
+      text-align: center;
+      padding: 22px;
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: rgb(142, 140, 134);
+      text-transform: uppercase;
+    }
+ 
+    /* ══ RESPONSIVE ══ */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .hero-frame { display: none; }
+      .specs-circles { gap: 20px; padding: 40px 20px; }
+      .histoire { grid-template-columns: 1fr; padding: 50px 20px; gap: 40px; }
+      .hist-img img { height: 240px; }
+      .fiche { padding: 50px 20px; }
+      .fiche-cols { grid-template-columns: 1fr; }
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <div class="intro">
+    <div class="lettres">
+      <span class="lettre">F</span>
+      <span class="lettre">e</span>
+      
+      <span class="lettre">r</span>
+      <span class="lettre">r</span>
+      <span class="lettre">a</span>
+      <span class="lettre">r</span>
+      <span class="lettre">i</span>
+      <span class="lettre">3</span>
+      <span class="lettre">0</span>
+      <span class="lettre">8</span>
+      
+    </div>
+    <div class="intro-ligne"></div>
+    <div class="intro-sous">Ferrari · 1975 · Iconique</div>
+  </div>
+
+
+   <div class="page">
+ 
+   
+ 
+    <nav>
+      <a href="#" class="logo">OldTown</a>
+      <a href="ourcars.html" class="nav-back">← Nos Voitures</a>
+    </nav>
+ 
+    <!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-frame">
+    <div class="hf-tl"></div>
+    <div class="hf-tr"></div>
+    <div class="hf-bl"></div>
+    <div class="hf-br"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hc-tag">Ferrari · 1975</div>
+    <h1>308<br/>GTS</h1>
+    <div class="hc-model">La légende italienne décapotable</div>
+    <div class="hc-ligne"></div>
+    <div class="hc-prix">10 800 MAD <span>par jour</span></div>
+  </div>
+</div>
+
+<!-- SPECS CIRCULAIRES -->
+<div class="specs-circles">
+  <div class="circle-spec">
+    <div class="cs-ring">
+      <div class="cs-val">2.9L</div>
+      <div class="cs-unit">V8</div>
+    </div>
+    <div class="cs-label">Moteur</div>
+  </div>
+  <div class="circle-spec">
+    <div class="cs-ring">
+      <div class="cs-val">255</div>
+      <div class="cs-unit">ch</div>
+    </div>
+    <div class="cs-label">Puissance</div>
+  </div>
+  <div class="circle-spec">
+    <div class="cs-ring">
+      <div class="cs-val">6.5</div>
+      <div class="cs-unit">sec</div>
+    </div>
+    <div class="cs-label">0–100 km/h</div>
+  </div>
+  <div class="circle-spec">
+    <div class="cs-ring">
+      <div class="cs-val">250</div>
+      <div class="cs-unit">km/h</div>
+    </div>
+    <div class="cs-label">Vitesse max</div>
+  </div>
+  <div class="circle-spec">
+    <div class="cs-ring">
+      <div class="cs-val">2</div>
+      <div class="cs-unit">places</div>
+    </div>
+    <div class="cs-label">Capacité</div>
+  </div>
+</div>
+
+<!-- HISTOIRE -->
+<div class="histoire">
+  <div class="hist-img">
+    <img src="ferrari3081.jpeg" alt="Ferrari 308 GTS 1975"/>
+  </div>
+  <div class="hist-text">
+    <div class="ht-tag">Son histoire</div>
+    <h2>L’icône italienne du style et de la sportivité</h2>
+    <div class="hist-ligne"></div>
+    <p>La Ferrari 308 GTS, lancée en 1975, est un cabriolet sportif emblématique du constructeur :contentReference[oaicite:0]{index=0}. Elle remplace la Dino 246 et se distingue par son moteur V8 central arrière et son design signé :contentReference[oaicite:1]{index=1}.</p>
+    <p>Conçue pour allier performance et élégance, elle offre un style intemporel, des performances dynamiques sur route et circuit, et une expérience de conduite inoubliable. Aujourd’hui, elle est très recherchée par les collectionneurs et reste un symbole de l’Italie automobile.</p>
+  </div>
+</div>
+
+<!-- FICHE TECHNIQUE -->
+<div class="fiche">
+  <div class="fiche-titre">FICHE TECHNIQUE</div>
+  <div class="fiche-sous">Spécifications complètes</div>
+  <div class="fiche-cols">
+    <div>
+      <div class="fiche-row"><span class="fr-l">Marque</span><span class="fr-v">Ferrari</span></div>
+      <div class="fiche-row"><span class="fr-l">Modèle</span><span class="fr-v">308 GTS</span></div>
+      <div class="fiche-row"><span class="fr-l">Année</span><span class="fr-v">1975</span></div>
+      <div class="fiche-row"><span class="fr-l">Carrosserie</span><span class="fr-v">Coupé / Cabriolet Targa</span></div>
+      <div class="fiche-row"><span class="fr-l">Moteur</span><span class="fr-v">2.9L V8</span></div>
+      <div class="fiche-row"><span class="fr-l">Puissance</span><span class="fr-v">255 chevaux</span></div>
+    </div>
+    <div>
+      <div class="fiche-row"><span class="fr-l">Couple</span><span class="fr-v">255 Nm</span></div>
+      <div class="fiche-row"><span class="fr-l">Boîte</span><span class="fr-v">Manuelle 5 rapports</span></div>
+      <div class="fiche-row"><span class="fr-l">0 à 100 km/h</span><span class="fr-v">6.5 secondes</span></div>
+      <div class="fiche-row"><span class="fr-l">Vitesse maximale</span><span class="fr-v">250 km/h</span></div>
+      <div class="fiche-row"><span class="fr-l">Places</span><span class="fr-v">2 personnes</span></div>
+      <div class="fiche-row"><span class="fr-l">Prix / jour</span><span class="fr-v">10 800 MAD </span></div>
+    </div>
+  </div>
+</div>
+    <!-- BOUTON -->
+    <div class="btn-wrap">
+      <a href="contact.html" class="btn-reserver">Réserver cette voiture</a>
+    </div>
+ 
+    <div class="ornament"></div>
+ 
+    <footer>© MMXXVI — OldTown Garage — Location de voitures de collection</footer>
+ 
+  </div>
+</body>
+</html>

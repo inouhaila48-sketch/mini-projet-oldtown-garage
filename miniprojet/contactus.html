@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Contact - Classic Cars</title>
+<link rel="stylesheet" href="contactus.css">
+</head>
+
+<body>
+    <div class="curtain-container">
+    <div class="curtain left"></div>
+    <div class="curtain right"></div>
+</div>
+<header class="header">
+        <a href="#" class="logo">Oldtown</a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="home2.html">Home</a></li>
+                <li><a href="ourcars.html">Our Cars</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contactus.html" >Contact Us</a>
+                 <li><a href="reviews.html">Reviews</a></li>
+                
+            </ul>
+        </nav>
+       
+    </header>
+<header class="header1">
+    
+        <div class="overlay">
+            <h1>CONTACT US</h1>
+        </div>
+ 
+</header>
+
+<div class="container">
+
+    <h1 style="font-family: Arial, sans-serif;">✦   Contactez-Nous  ✦</h1>
+    <p class="subtitle">Réservez votre voiture classique</p>
+
+    <form id="form">
+
+        <label>Nom Complet</label>
+        <input type="text" placeholder="Entrez votre nom" required>
+
+        <label>Adresse Email</label>
+        <input type="email" placeholder="Entrez votre email" required>
+
+        <label>Voiture Souhaitée</label>
+        <select required>
+            <option value="">Choose a car</option>
+            <option> Ford Mustang Fastback </option>
+            <option>Mercedes Benz 300SL</option>
+            <option>Jaguar E-Type</option>
+            <option>Ferrari Testarossa</option>
+            <option>Lamborghini Miura</option>
+            <option>Porshe 356</option>
+            <option>Aston Martin DB5</option>
+            <option>Chevrolet Corvette C2 Sting Ray</option>
+            <option>BMW 507</option>
+            <option>Rolls Royce Silver Cloud</option>
+            <option>Ferrari 308 GTS</option>
+            <option>Citroen DS</option>
+        </select>
+        <label>Type d'Événement</label>
+        <select required>
+           <option value="">Choisissez un type d'événement</option>
+           <option value="aucun">Aucun</option>
+           <option value="mariage">Mariage</option>
+           <option value="tournage">Tournage & Shooting</option>
+           <option value="weekend">Weekend Vintage</option>
+        </select>
+
+        <label>Nombre de jours</label>
+        <input type="number" min="1" placeholder="Nombre de jours" required>
+
+        <label>Âge</label>
+        <input type="number" id="age" placeholder="Votre âge" required>
+
+        <p class="note">Vous devez avoir 18 ans ou plus pour réserver.</p>
+
+        <button type="submit">ENVOYER</button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <div class="footer">
+        <p>📞 01 23 45 67 89</p>
+        <p>📧 oldtown-garage@gmail.com</p>
+        <p>📍 Adresse : 123 Rue de l'ancienne ville ,7500 Paris</p>
+    </div>
+
+</div>
+
+<div class="response">
+    <h2>Nous vous répondrons sous 24 heures !</h2>
+    <p>Merci pour votre demande. Nous vous contacterons dans les prochaines 24 heures.</p>
+</div>
+
+
+<div class="cars-section">
+    <div class="car-card">
+
+        <img src="aston.jpeg">
+        <a href="ourcars.html" class="discover-btn">Discover</a>
+    </div>
+    <div class="car-card">
+
+        <img src="jaguar.jpg.jpeg">
+        <a href="ourcars.html" class="discover-btn">Discover</a>
+    </div>
+    <div class="car-card">
+
+        <img src="mercedes300SL.jpeg">
+        <a href="ourcars.html" class="discover-btn">Discover</a>
+    </div>
+  
+   
+</div>
+<footer class="main-footer">
+
+ 
+  <div class="footer-contact">
+    <p>📞 01 23 45 67 89</p>
+    <p>📧 oldtown-garage@gmail.com</p>
+    <p>📍 123 Rue de l'ancienne ville, 7500 Paris</p>
+  </div>
+
+  
+  <div class="partners-section">
+    <h2>Nos Partenaires</h2>
+    <div class="partners-logos">
+      <img src="logo1.jpg.jpeg" alt="Logo partenaire 1">
+      <img src="logo2.jpg.jpeg" alt="Logo partenaire 2">
+      <img src="logo3.jpg.jpeg" alt="Logo partenaire 3">
+      <img src="logo4.jpg.jpeg" alt="Logo partenaire 4">
+    </div>
+  </div>
+
+  <div class="newsletter-section">
+    <h2>Restons en Contact</h2>
+    <p>Recevez nos offres exclusives et dernières voitures classiques !</p>
+    
+      <input type="email" placeholder="Votre email" required>
+       
+        <div class="subscribe-text-container">
+        <div class="subscribe-text">
+           
+            <a href="home2.html" >Merci pour votre inscription</a>
+            <span class="emoji">🎉</span>
+        </div>
+    </div>
+    
+  </div>
+
+  <div class="quote-section">
+    <p>"La beauté d'une voiture classique est éternelle."</p>
+  </div>
+
+</footer>
+<script>
+    document.getElementById("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let age = document.getElementById("age").value;
+    let message = document.getElementById("message");
+
+    if (age < 18) {
+        message.style.color = "red";
+        message.innerText = "❌ Vous devez avoir 18 ans minimum !";
+    } else {
+        message.style.color = "lightgreen";
+        message.innerText = "✅ Nous vous répondrons dans 24h !";
+    }
+});
+
+
+
+
+
+
+window.addEventListener("load", () => {
+    const curtain = document.querySelector(".curtain-container");
+    setTimeout(() => curtain.classList.add("open"), 500);
+    setTimeout(() => curtain.remove(), 2000);
+});
+ 
+
+</script>
+</body>
+</html>
