@@ -62,7 +62,7 @@ h1{
 
 .hero {
      height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Gemini_Generated_Image_kiy29dkiy29dkiy2.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Gemini.png');
     background-size: cover;
     background-position: center;
     display: flex;
